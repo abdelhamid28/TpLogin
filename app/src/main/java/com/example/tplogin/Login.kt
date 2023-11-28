@@ -1,4 +1,4 @@
-package com.example.loginregistertp
+package com.example.tplogin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

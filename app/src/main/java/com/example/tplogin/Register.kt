@@ -7,9 +7,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.loginregistertp.Login
 import com.example.tplogin.databinding.ActivityRegistreBinding
 import com.google.firebase.auth.FirebaseAuth
+
 class Register : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     public override fun onStart() {
@@ -22,6 +22,7 @@ class Register : AppCompatActivity() {
             finish()
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityRegistreBinding =
@@ -36,25 +37,37 @@ class Register : AppCompatActivity() {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
             binding.progress.visibility = View.VISIBLE
+
+
+
             if (email.isEmpty()) {
                 Toast.makeText(this, "Email is empty", Toast.LENGTH_SHORT).show()
                 binding.progress.visibility = View.GONE
                 return@setOnClickListener
             }
+
             if (password.isEmpty()) {
-                Toast.makeText(this, "Password is empty",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "password is empty", Toast.LENGTH_SHORT).show()
                 binding.progress.visibility = View.GONE
                 return@setOnClickListener
             }
 
-            Log.d("xxxxxx", "${auth.toString()}")
+
+            /*    val passwordRegex = Regex("^(?=.*[A-Z])(?=.*\\d).{6,}\$")
+                if (!password.matches(passwordRegex)) {
+                    Toast.makeText(
+                        this,
+                        "Password must be at least 6 characters long, contain at least one uppercase letter, and one digit.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    binding.progress.visibility = View.GONE
+                    return@setOnClickListener
+                }*/
+
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     binding.progress.visibility = View.GONE
                     if (task.isSuccessful) {
-// Sign in success, update UI with the signed-in user's information
-                        Log.d("isSuccessful", "createUserWithEmail:success")
                         Toast.makeText(
                             baseContext,
                             "Account created.",
@@ -68,10 +81,6 @@ class Register : AppCompatActivity() {
 
                         finish()
                     } else {
-// If sign-in fails, display a message to the user.
-                        Log.w("isSuccessfulnoooo", "createUserWithEmail:failure",
-
-                            task.exception)
                         Toast.makeText(
                             baseContext,
 
