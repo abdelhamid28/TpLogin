@@ -3,6 +3,7 @@ package com.example.tplogin
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         initMenu(binding)
+        initNav(navView)
         auth = FirebaseAuth.getInstance()
         user = auth.currentUser!!
         if (user == null) {
@@ -33,12 +35,37 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.tvDetails.text = user!!.email.toString()
         }
-        binding.btnLogout.setOnClickListener {
+      /*  binding.btnLogout.setOnClickListener {
             auth.signOut()
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
             finish()
+        }*/
+    }
+
+    private fun initNav(navView: NavigationView) {
+
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.users -> {
+                    Toast.makeText(this, "users hi", Toast.LENGTH_SHORT).show()
+                    true}
+                R.id.profile -> {
+                    Toast.makeText(this, "profile hi", Toast.LENGTH_SHORT).show()
+
+                    true}
+                R.id.logout -> {
+
+                    auth.signOut()
+                    val intent = Intent(this, Login::class.java)
+                    startActivity(intent)
+                    finish()
+                    true}
+                else -> false
+
+            }
         }
+
     }
 
     private fun initMenu(binding: ActivityMainBinding) {
