@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "84698568637",
+    "project_id": "logintp-2e631",
+    "storage_bucket": "logintp-2e631.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84698568637:android:535084d32613ea171aa4d4",
+        "android_client_info": {
+          "package_name": "com.example.tplogin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3X2A_fpc-TNBFTZSkA1-5c6iRdL0FfUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
