@@ -8,4 +8,9 @@ interface ApiInterface {
     @GET("posts")
 
     fun getData(): Call<List<User>>
+
+
+
+
+
 }
